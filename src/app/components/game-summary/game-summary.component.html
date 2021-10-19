@@ -1,0 +1,68 @@
+<ion-card *ngIf="game">
+  <ion-card-content>
+
+    <ion-grid>
+      <ion-row>
+        <ion-col size="3" class="text-center">
+          <img src="assets/image/icons/teams-default4.png" class="card-img-top" style="width:70px;" alt="...">
+          <div class="fw-bolder">{{game.local?.name}}</div>
+          <div class="fs-6 fw-light lh-1 text-muted">
+            <small>LOCAL</small>
+          </div>
+          <div class="pt-2" style="height: 34px;" >
+            <ion-icon class="p-1" name="timer-outline" *ngFor="let timeout of activeQuarter?.localTimeouts"></ion-icon>
+          </div>
+        </ion-col>
+        <ion-col size="6" class="text-center">
+
+          <ion-grid>
+            <ion-row>
+              <ion-col size="5">
+                <div>
+                  <ion-label color="warning" class="fs-1 font-monospace">
+                    {{game.localScore}}
+                  </ion-label>
+                </div>
+                <ion-label color="danger" class="fs-3 font-monospace">
+                  {{activeQuarter?.localFouls}}
+                </ion-label>
+              </ion-col>
+              <ion-col size="2">
+
+                <div class="pt-1 pb-1 bg-dark text-white border">
+                  <span class="pt-2 fs-3 font-monospace"> {{activeQuarter?.number}}</span>
+                  <div class="fs-6 fw-light lh-1 ">
+                    <small>{{activeQuarter?.name}}</small>
+                  </div>
+                </div>
+
+                <ion-badge class="mt-2" color="danger">LIVE</ion-badge>
+              </ion-col>
+              <ion-col size="5">
+                <div>
+                  <ion-label color="warning" class="fs-1 font-monospace">
+                    {{game.visitorScore}}
+                  </ion-label>
+                </div>
+                <ion-label color="danger" class="fs-3 font-monospace">
+                  {{activeQuarter?.visitorFouls}}
+                </ion-label>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-col>
+        <ion-col size="3" class="text-center">
+          <img src="assets/image/icons/teams-default4.png" class="card-img-top" style="width:70px;" alt="...">
+          <div class="fw-bolder">{{game.visitor?.name}}</div>
+          <div class="fs-6 fw-light lh-1 text-muted">
+            <small>VISITANTE</small>
+          </div>
+          <div class="pt-2" style="height: 34px;">
+            <ion-icon class="p-1" name="timer-outline" *ngFor="let timeout of activeQuarter?.visitorTimeouts"></ion-icon>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+  </ion-card-content>
+</ion-card>

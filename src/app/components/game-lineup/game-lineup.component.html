@@ -1,0 +1,33 @@
+<ion-card>
+  <ion-card-content>
+    <ion-list class="pt-0">
+      <ion-list-header>
+        <ion-label>{{team.name}}</ion-label>
+        <ion-button (click)="lineup()">Formación</ion-button>
+        <ion-button (click)="timeout()">Minuto</ion-button>
+      </ion-list-header>
+
+      <ng-container *ngFor="let player of team?.players">
+        <ion-item-sliding *ngIf="player.headline">
+          <ion-item (click)="optionPlayer(player,  'local' )">
+            <ion-avatar slot="start">
+              <ion-label class="bg-secondary text-center text-white p-1">
+                <span class="fs-5 fw-bold">{{player.number}}</span>
+              </ion-label>
+            </ion-avatar>
+
+            <ion-label class="p-2">
+              {{player.name}} {{player.lastName}}
+            </ion-label>
+            <ion-badge color="danger">{{player.fouls}}</ion-badge>
+          </ion-item>
+          <ion-item-options side="end">
+            <ion-item-option (click)="viewStats(player)">Stats</ion-item-option>
+          </ion-item-options>
+        </ion-item-sliding>
+      </ng-container>
+
+    </ion-list>
+
+  </ion-card-content>
+</ion-card>

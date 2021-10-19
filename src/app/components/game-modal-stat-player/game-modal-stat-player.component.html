@@ -1,0 +1,134 @@
+<ion-header translucent>
+  <ion-toolbar>
+    <ion-label slot="start" class="bg-secondary text-center p-2 m-2 text-white" style="min-width: 55px;">
+      <span class="fs-3 fw-bold">{{player.number}}</span>
+    </ion-label>
+    <ion-label slot="start" class="p-2">
+      <div class="fw-bold">
+        {{player.name}} {{player.lastName}}
+      </div>
+      <div class="text-muted">
+        <small>{{player.position}}</small>
+      </div>
+    </ion-label>
+  </ion-toolbar>
+</ion-header>
+<ion-content fullscreen>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-card>
+          <ion-card-content>
+            <ion-item>
+              <ion-icon class="fs-1" name="basketball-outline" slot="start"></ion-icon>
+              <ion-label>
+                <span class="fs-1 fw-bold">{{player.stats.PTS}}</span> /
+                <span class="fs-3">{{player.stats.MPT}}</span>
+                <br>
+                <span class="fs-6">Puntos</span>
+              </ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-label>Tiros Libres</ion-label>
+              <ion-label slot="end">
+                <span class="fs-4 fw-bold">{{player.stats.PTS1}}</span> /
+                <span>{{player.stats.MPT1}}</span>
+              </ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-label>Media Distancia</ion-label>
+              <ion-label slot="end">
+                <span class="fs-4 fw-bold">{{player.stats.PTS2}}</span> /
+                <span>{{player.stats.MPT2}}</span>
+              </ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-label>Triples</ion-label>
+              <ion-label slot="end">
+                <span class="fs-4 fw-bold">{{player.stats.PTS3}}</span> /
+                <span>{{player.stats.MPT3}}</span>
+              </ion-label>
+            </ion-item>
+          </ion-card-content>
+        </ion-card>
+
+        <ion-card>
+          <ion-card-content>
+            <ion-item class="text-center ion-no-border">
+              <ion-label>
+                <span class="fs-1 fw-bold">{{player.stats.PF}}</span>
+                <br>
+                <span class="fs-6">Faltas</span>
+              </ion-label>
+              <ion-label>
+                <span class="fs-1 fw-bold">{{player.stats.MAS}}</span>
+                <br>
+                <span class="fs-6">Perdidas</span>
+              </ion-label>
+            </ion-item>
+          </ion-card-content>
+        </ion-card>
+
+      </ion-col>
+      <ion-col>
+
+
+        <ion-card>
+          <ion-card-content>
+            <ion-item>
+              <ion-icon class="fs-1" name="bookmark-outline" slot="start"></ion-icon>
+              <ion-label>
+                <span class="fs-1 fw-bold">{{player.stats.OR + player.stats.DR}}</span>
+                <br>
+                <span class="fs-6">Rebotes</span>
+              </ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-label>Rebotes Ofensivo</ion-label>
+              <ion-label slot="end">
+                <span class="fs-4 fw-bold">{{player.stats.OR}}</span>
+              </ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-label>Rebotes Defensivo</ion-label>
+              <ion-label slot="end">
+                <span class="fs-4 fw-bold">{{player.stats.DR}}</span>
+              </ion-label>
+            </ion-item>
+          </ion-card-content>
+        </ion-card>
+
+        <ion-card>
+          <ion-card-content>
+            <ion-item>
+              <ion-label>Asistencias</ion-label>
+              <ion-label slot="end">
+                <span class="fs-4 fw-bold">{{player.stats.AST}}</span> /
+                <span>{{player.stats.AST}}</span>
+              </ion-label>
+            </ion-item>
+
+            <ion-item>
+              <ion-label>Robos</ion-label>
+              <ion-label slot="end">
+                <span class="fs-4 fw-bold">{{player.stats.STL}}</span>
+              </ion-label>
+            </ion-item>
+
+            <ion-item>
+              <ion-label>Tapas</ion-label>
+              <ion-label slot="end">
+                <span class="fs-4 fw-bold">{{player.stats.BLK}}</span>
+              </ion-label>
+            </ion-item>
+
+          </ion-card-content>
+        </ion-card>
+
+      </ion-col>
+
+
+    </ion-row>
+  </ion-grid>
+</ion-content>

@@ -1,0 +1,61 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Games</ion-title>
+    <ion-progress-bar type="indeterminate" *ngIf="loading"></ion-progress-bar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  
+  <div class="image-load4" role="image" *ngIf="loading"></div>
+
+
+  <ion-card *ngFor="let e of elements" (click)="view(e)" >
+    <ion-card-header class="text-center">
+      <div>
+        <ion-icon name="calendar-outline"></ion-icon>
+        {{e.date | date}} a las {{e.date | date :'HH:mm'}}
+      </div>
+    </ion-card-header>
+
+    <ion-card-content>
+
+      <ion-grid>
+        <ion-row>
+          <ion-col class="text-center">
+            <img src="assets/image/icons/teams-default4.png" class="card-img-top" style="width:70px;" alt="...">
+            <div class="fw-bolder">{{e.local.name}}</div>
+            <div class="fs-6 fw-light lh-1 text-muted">
+              <small>LOCAL</small>
+            </div>
+          </ion-col>
+          <ion-col class="text-center">
+            <div style="padding-top: 20px">
+              <span class="fs-2 p-4 font-monospace">{{e.scoreLocal}}</span>
+              <span class="text-muted">v/s</span>
+              <span class="fs-2 p-4 font-monospace">{{e.scoreVisitor}}</span>
+            </div>
+            <div [ngSwitch]="e.state">
+              <span *ngSwitchCase="'PENDING'">PENDIENTE</span>
+              <span *ngSwitchCase="'IN_PROGRESS'">EN PROGRESO</span>
+              <span *ngSwitchCase="'FINALIZED'">FINAL</span>
+              <span *ngSwitchDefault>...</span>
+            </div>
+          </ion-col>
+          <ion-col class="text-center">
+            <img src="assets/image/icons/teams-default4.png" class="card-img-top" style="width:70px;" alt="...">
+            <div class="fw-bolder">{{e.visitor.name}}</div>
+            <div class="fs-6 fw-light lh-1 text-muted">
+              <small>LOCAL</small>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+    </ion-card-content>
+  </ion-card>
+
+
+
+</ion-content>

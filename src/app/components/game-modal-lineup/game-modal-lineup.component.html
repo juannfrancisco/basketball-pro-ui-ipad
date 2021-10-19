@@ -1,0 +1,31 @@
+<ion-header translucent>
+  <ion-toolbar>
+    <ion-title>Line-up {{team.name}}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="close()">Close</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content fullscreen>
+  <ion-list>
+    <ng-container *ngFor="let player of team?.players">
+      <ion-item (click)="selectPlayer(player)">
+        <ion-avatar slot="start">
+          <ion-label class="text-center text-white p-1" [ngClass]="{'bg-secondary': !player.headline, 'bg-primary': player.headline}">
+            <span class="fs-5 fw-bold">{{player.number}}</span>
+          </ion-label>
+        </ion-avatar>
+        
+        <ion-label class="p-2">
+          <div>
+            {{player.name}} {{player.lastName}}
+          </div>
+          <div class="text-muted">
+            <small>{{player.position}}</small>
+          </div>
+        </ion-label>
+        <ion-badge *ngIf="player.headline" mode="android" color="warning text-white">Titular</ion-badge>
+      </ion-item>
+    </ng-container>
+  </ion-list>
+</ion-content>

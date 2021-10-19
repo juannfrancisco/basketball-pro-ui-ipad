@@ -1,0 +1,122 @@
+<ion-header translucent>
+  <ion-toolbar>
+    <ion-label slot="start" class="bg-secondary text-center p-2 m-2 text-white" style="min-width: 55px;">
+      <span class="fs-3 fw-bold">{{player.number}}</span>
+    </ion-label>
+    <ion-label slot="start" class="p-2">
+      <div class="fw-bold">
+        {{player.name}} {{player.lastName}}
+      </div>
+      <div class="text-muted">
+        <small>{{player.position}}</small>
+      </div>
+    </ion-label>
+    <ion-buttons slot="end">
+      <ion-button (click)="close()">Close</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content fullscreen>
+
+
+  <ion-grid>
+
+    <ion-row>
+      <ion-col>
+        <h4>
+          <i class="ico-screenshot"></i>
+          Puntos
+        </h4>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-button color="primary" expand="block" (click)="addStat(1, 'PTS')"> 1 punto</ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button color="primary" expand="block" (click)="addStat(2, 'PTS')"> 2 puntos</ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button color="primary" expand="block" (click)="addStat(3, 'PTS')"> 3 puntos</ion-button>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-button color="danger" expand="block" (click)="addStat(1, 'MPT')"> 1 punto</ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button color="danger" expand="block" (click)="addStat(2, 'MPT')"> 2 puntos</ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button color="danger" expand="block" (click)="addStat(3, 'MPT')"> 3 puntos</ion-button>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <h4>
+          <i class="ico-screenshot"></i>
+          Ataque
+        </h4>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-button color="primary" expand="block" (click)="addStat(1, 'OR')">Rebote</ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button color="primary" expand="block" (click)="addStat(1, 'AST')">+ Asistencia</ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button color="danger" expand="block" (click)="addStat(1, 'MAS')">- Asistencia</ion-button>
+      </ion-col>
+    </ion-row>
+
+
+    <ion-row>
+      <ion-col>
+        <h4>
+          <i class="ico-screenshot"></i>
+          Defensa
+        </h4>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-button color="primary" expand="block" (click)="addStat(1, 'DR')"> Rebote</ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button color="primary" expand="block" (click)="addStat(1, 'STL')"> Robo</ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button color="primary" expand="block" (click)="addStat(1, 'BLK')"> Bloqueo</ion-button>
+      </ion-col>
+    </ion-row>
+
+
+    <ion-row>
+      <ion-col>
+        <h4>
+          <i class="ico-screenshot"></i>
+          Falta
+        </h4>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-button color="warning" expand="block" (click)="addStat(1, 'PF')"> Foul Personal</ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button color="warning" expand="block" (click)="addStat(1, 'PF')"> Foul Tecnico</ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button color="danger" expand="block" (click)="addStat(1, 'PF')"> Expulsion</ion-button>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+
+
+
+</ion-content>
