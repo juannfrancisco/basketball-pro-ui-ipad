@@ -10,6 +10,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Stats } from '../../models/stats';
 import { denodeify } from 'q';
+import { debounceTime } from 'rxjs/operators';
 
 @Component({
   selector: 'app-game-live',
@@ -33,7 +34,7 @@ export class GameLivePage implements OnInit {
     state: "pause", 
     localTimeouts: [],
     visitorTimeouts: [],
-    timetext: ""
+    timetext: "10:00"
   };
   loading: boolean;
 
@@ -66,7 +67,6 @@ export class GameLivePage implements OnInit {
       this.element.local.players = this.element.local.players.sort((a, b) => (a.number < b.number ? -1 : 1));
       this.element.visitor.players = this.element.visitor.players.sort((a, b) => (a.number < b.number ? -1 : 1));
 
-
       this.element.localScoreObj = [{number:"0",active:false},{number:"0",active:false},{number:"0",active:false}];
       this.element.visitorScoreObj = [{number:"0",active:false},{number:"0",active:false},{number:"0",active:false}];
 
@@ -89,7 +89,7 @@ export class GameLivePage implements OnInit {
 
 
   /**
-   * 
+   * Recibe el evento de un punto, foul etc desde el modal.
    * @param statEvent 
    */
   eventStats(statEvent: GameStat) {
@@ -100,6 +100,10 @@ export class GameLivePage implements OnInit {
       
       statEvent.player.stats[statEvent.type] = statEvent.player.stats[statEvent.type] + statEvent.value;
 
+      debugger;
+      statEvent.quarterTimeText = this.activeQuarter.timetext;
+
+      this.gameStats.push(statEvent);
       this[statEvent.typeTeam.toLowerCase() + "Stats"].push(statEvent);
 
       if (statEvent.type == "PTS" || statEvent.type == "MPT" ) {
@@ -137,8 +141,12 @@ export class GameLivePage implements OnInit {
     }
   }
 
-  toDigit(num:number):Digit[]{    
-    debugger;
+  /**
+   * Convierte un integer a string con un formato de tres digitos, 
+   * por ejemplo si vienen un integer 3 retorna el string "003"
+   * @param num 
+   */
+  toDigit(num:number):Digit[]{
     let digits:Digit[] = []; 
     let digitsSplit = num.toString().split('');
     let size = 3- digitsSplit.length ;

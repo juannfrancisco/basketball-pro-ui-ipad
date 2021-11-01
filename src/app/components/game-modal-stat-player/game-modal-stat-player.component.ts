@@ -1,3 +1,4 @@
+import { ModalController } from '@ionic/angular';
 import { Player } from './../../models/player';
 import { Component, OnInit, Input } from '@angular/core';
 
@@ -10,8 +11,15 @@ export class GameModalStatPlayerComponent implements OnInit {
 
   @Input() player:Player;
 
-  constructor() { }
+  constructor(
+    public modalController: ModalController
+  ) { }
 
   ngOnInit() {}
+
+  close() {
+    this.modalController.dismiss();
+  }
+
 
 }

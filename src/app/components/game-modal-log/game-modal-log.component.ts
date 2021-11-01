@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
+import { GameStat } from './../../models/game-stat';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-game-modal-log',
@@ -7,8 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GameModalLogComponent implements OnInit {
 
-  constructor() { }
+  @Input() gameStats:GameStat[];
+
+
+  constructor(
+    public modalController: ModalController
+  ) { }
 
   ngOnInit() {}
+
+  close() {
+    this.modalController.dismiss();
+  }
 
 }

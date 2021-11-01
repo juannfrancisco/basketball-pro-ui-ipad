@@ -1,3 +1,6 @@
+import { GameStat } from './../../models/game-stat';
+import { GameModalLogComponent } from './../game-modal-log/game-modal-log.component';
+import { ModalController } from '@ionic/angular';
 import { Quarter } from './../../models/quarter';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Subscription, interval } from 'rxjs';
@@ -16,6 +19,8 @@ export class GameClockComponent implements OnInit {
 
   @Input() quarter: Quarter[];
   @Input() activeQuarter: Quarter;
+  @Input() gameStats:GameStat[];
+
   @Output() eventQuarters = new EventEmitter<Quarter>();
 
   timetext: string = "00:00";
@@ -27,7 +32,9 @@ export class GameClockComponent implements OnInit {
 
 
 
-  constructor() { }
+  constructor(
+    public modalController: ModalController
+  ) { }
 
   ngOnInit(): void {
   }
@@ -97,6 +104,18 @@ export class GameClockComponent implements OnInit {
       this.timer.unsubscribe();
       this.timer = undefined;
     }
+  }
+
+  async logs(){
+    const modal = await this.modalController.create({
+      component: GameModalLogComponent,
+      componentProps: {
+        'quarter': this.quarter,
+        'gameStats': this.gameStats
+      }
+    });
+    await modal.present();
+    const { data } = await modal.onWillDismiss();
   }
 
 }

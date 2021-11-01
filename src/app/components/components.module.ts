@@ -1,3 +1,4 @@
+import { GameModalLogComponent } from './game-modal-log/game-modal-log.component';
 import { GameScoreboardComponent } from './game-scoreboard/game-scoreboard.component';
 import { GameModalStatPlayerComponent } from './game-modal-stat-player/game-modal-stat-player.component';
 import { GameModalLineupComponent } from './game-modal-lineup/game-modal-lineup.component';
@@ -23,6 +24,7 @@ import { NgModule } from '@angular/core';
         GameModalStatComponent,
         GameModalLineupComponent,
         GameModalStatPlayerComponent,
+        GameModalLogComponent,
         GameScoreboardComponent
     ],
     exports:[
@@ -32,6 +34,7 @@ import { NgModule } from '@angular/core';
         GameModalStatComponent,
         GameModalLineupComponent,
         GameModalStatPlayerComponent,
+        GameModalLogComponent,
         GameScoreboardComponent
     ],
   })
