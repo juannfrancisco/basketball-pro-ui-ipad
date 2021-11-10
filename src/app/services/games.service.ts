@@ -42,6 +42,6 @@ export class GamesService {
   }
 
   saveStat( oid:string, gameStat:GameStat ){
-    return this.http.put( environment.endpoint +  "games/" + oid + "/stats" , gameStat);
+    return this.http.put<GameStat>( environment.endpoint +  "games/" + oid + "/stats" , gameStat);
   }
 }

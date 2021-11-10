@@ -1,9 +1,9 @@
-<ion-header translucent="true" >
+<ion-header translucent="true">
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>GameLive</ion-title>
+    <ion-title>Game Live</ion-title>
     <ion-progress-bar type="indeterminate" *ngIf="loading"></ion-progress-bar>
   </ion-toolbar>
 
@@ -11,45 +11,23 @@
 
 <ion-content fullscreen="true">
 
-  <ion-grid *ngIf="!loading">
-      <ion-row>
-          <ion-col>
-            <app-game-scoreboard 
-            [game]="element" 
-            [quarters]="quarters" 
-            [activeQuarter]="activeQuarter"
-            [gameStats]="gameStats"
-            (events)="eventQuarters($event)" ></app-game-scoreboard>
-          </ion-col>
-        </ion-row>
-    <!--ion-row>
-      <ion-col size="8">
-        <app-game-summary 
-        [game]="element" 
-        [quarters]="quarters" 
-        [activeQuarter]="activeQuarter" ></app-game-summary>
-      </ion-col>
-      <ion-col size="4">
-        <app-game-clock (eventQuarters)="eventQuarters($event)"  
-        [quarter]="quarters" 
-        [activeQuarter]="activeQuarter"></app-game-clock>
-      </ion-col>
-    </ion-row-->
+  <div class="text-center bg-white text-dark p-4" *ngIf="loading">
+    <h6>Cargando...</h6>
+    <img src="assets/image/loading/basket-loading4.gif">
+  </div>
 
+  <ion-grid *ngIf="!loading">
     <ion-row>
       <ion-col>
-        <app-game-lineup (stats)="eventStats($event)" 
-          [game]="element" 
-          [team]="element.local" 
-          [quarter]="quarters"
-          [typeTeam]="'local'"></app-game-lineup>
+        <app-game-scoreboard [game]="element" [quarters]="quarters" [activeQuarter]="activeQuarter" [gameStats]="gameStats" (events)="eventQuarters($event)"></app-game-scoreboard>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <app-game-lineup (stats)="eventStats($event)" [game]="element" [team]="element.local" [activeQuarter]="activeQuarter" [typeTeam]="'LOCAL'"></app-game-lineup>
       </ion-col>
       <ion-col>
-        <app-game-lineup (stats)="eventStats($event)" 
-          [game]="element" 
-          [team]="element.visitor" 
-          [quarter]="quarters"
-          [typeTeam]="'visitor'"></app-game-lineup>
+        <app-game-lineup (stats)="eventStats($event)" [game]="element" [team]="element.visitor" [activeQuarter]="activeQuarter" [typeTeam]="'VISITOR'"></app-game-lineup>
       </ion-col>
     </ion-row>
   </ion-grid>

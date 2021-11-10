@@ -1,3 +1,4 @@
+import { Quarter } from './../../models/quarter';
 import { ModalController } from '@ionic/angular';
 import { GameStat } from './../../models/game-stat';
 import { Component, OnInit, Input } from '@angular/core';
@@ -10,16 +11,26 @@ import { Component, OnInit, Input } from '@angular/core';
 export class GameModalLogComponent implements OnInit {
 
   @Input() gameStats:GameStat[];
+  @Input() activeQuarter:Quarter;
+  numberQuarter:number = 0;
 
 
   constructor(
     public modalController: ModalController
   ) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.numberQuarter = this.activeQuarter.number;
+  }
 
   close() {
     this.modalController.dismiss();
+  }
+
+
+  quarterChanged(ev: any) {
+    this.numberQuarter = ev.detail.value;
+    console.log('Segment changed', ev);
   }
 
 }

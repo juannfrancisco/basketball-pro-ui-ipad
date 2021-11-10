@@ -110,7 +110,7 @@ export class GameClockComponent implements OnInit {
     const modal = await this.modalController.create({
       component: GameModalLogComponent,
       componentProps: {
-        'quarter': this.quarter,
+        'activeQuarter': this.activeQuarter,
         'gameStats': this.gameStats
       }
     });

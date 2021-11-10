@@ -1,3 +1,6 @@
+import { TypeStat } from './../../models/type-stat';
+import { TypeTeam } from './../../models/type-team';
+import { Quarter } from './../../models/quarter';
 import { GameStat } from './../../models/game-stat';
 import { GamesService } from './../../services/games.service';
 import { Player } from './../../models/player';
@@ -16,8 +19,8 @@ export class GameModalStatComponent implements OnInit {
   @Input() game: Game;
   @Input() team: Team;
   @Input() player: Player;
-  @Input() typeTeam: string;
-  @Input() quarter: number;
+  @Input() typeTeam: TypeTeam;
+  @Input() activeQuarter: Quarter;
 
 
   constructor(
@@ -40,12 +43,12 @@ export class GameModalStatComponent implements OnInit {
   addStat(value:number, typeStat:string){
     let gameStat:GameStat = new GameStat();
     gameStat.oidPlayer = this.player.oid;
-    gameStat.quarter = 1;
+    gameStat.quarter = this.activeQuarter.number;
     gameStat.teamOid = this.team.oid;
-    gameStat.type = typeStat;
+    gameStat.type = TypeStat[typeStat];
     gameStat.typeTeam = this.typeTeam;
     gameStat.value = value;
-
+    gameStat.quarterTimeText = this.activeQuarter.timetext;
     //this.gamesService.saveStat(this.game.oid, gameStat).subscribe();
     this.modalController.dismiss( gameStat );
     //this.activeModal.close(gameStat);

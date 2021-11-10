@@ -17,4 +17,10 @@ export class Game {
 
     localScoreObj?:Digit[];
     visitorScoreObj?:Digit[];
+
+
+    constructor(){
+        this.localScoreObj = [{ number: "0", active: false }, { number: "0", active: false }, { number: "0", active: false }];
+        this.visitorScoreObj = [{ number: "0", active: false }, { number: "0", active: false }, { number: "0", active: false }];
+    }
 }

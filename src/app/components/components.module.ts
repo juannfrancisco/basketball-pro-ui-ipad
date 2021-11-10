@@ -1,3 +1,4 @@
+import { StatsFilterPipe } from './../pipes/stats-filter.pipe';
 import { GameModalLogComponent } from './game-modal-log/game-modal-log.component';
 import { GameScoreboardComponent } from './game-scoreboard/game-scoreboard.component';
 import { GameModalStatPlayerComponent } from './game-modal-stat-player/game-modal-stat-player.component';
@@ -25,7 +26,8 @@ import { NgModule } from '@angular/core';
         GameModalLineupComponent,
         GameModalStatPlayerComponent,
         GameModalLogComponent,
-        GameScoreboardComponent
+        GameScoreboardComponent,
+        StatsFilterPipe
     ],
     exports:[
         GameSummaryComponent,

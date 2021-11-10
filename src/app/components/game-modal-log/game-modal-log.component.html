@@ -2,19 +2,40 @@
   <ion-toolbar>
     <ion-label>Registros</ion-label>
     <ion-buttons slot="end">
-      <ion-button>Close</ion-button>
+      <ion-button (click)="close()" >Close</ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 <ion-content fullscreen>
 
+  <ion-segment (ionChange)="quarterChanged($event)" >
+    <ion-segment-button value="1">
+      <ion-label>Q1</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="2">
+      <ion-label>Q2</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="3">
+      <ion-label>Q3</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="4">
+      <ion-label>Q4</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="0">
+      <ion-label>ALL</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
   <ion-list>
-    <ion-item-sliding *ngFor="let stat of gameStats">
+    <ion-item-sliding *ngFor="let stat of gameStats | statsFilter:numberQuarter">
       <ion-item>
-        <ion-label>{{stat.quarterTimeText}} - {{stat.player?.name}} {{stat.player?.lastName}} ( {{stat.value}} {{stat.type}} )</ion-label>
+        <ion-label>
+          <strong>Q{{stat.quarter}}</strong>
+          {{stat.quarterTimeText}} - {{stat.player?.name}} {{stat.player?.lastName}} ( {{stat.value}} {{stat.type}} )
+        </ion-label>
       </ion-item>
       <ion-item-options side="end">
-        <ion-item-option >Eliminar</ion-item-option>
+        <ion-item-option>Eliminar</ion-item-option>
       </ion-item-options>
     </ion-item-sliding>
   </ion-list>

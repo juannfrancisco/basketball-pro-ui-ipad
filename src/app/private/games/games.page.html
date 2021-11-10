@@ -32,9 +32,9 @@
           </ion-col>
           <ion-col class="text-center">
             <div style="padding-top: 20px">
-              <span class="fs-2 p-4 font-monospace">{{e.scoreLocal}}</span>
+              <span class="fs-2 p-4 font-monospace">{{e.localScore}}</span>
               <span class="text-muted">v/s</span>
-              <span class="fs-2 p-4 font-monospace">{{e.scoreVisitor}}</span>
+              <span class="fs-2 p-4 font-monospace">{{e.visitorScore}}</span>
             </div>
             <div [ngSwitch]="e.state">
               <span *ngSwitchCase="'PENDING'">PENDIENTE</span>

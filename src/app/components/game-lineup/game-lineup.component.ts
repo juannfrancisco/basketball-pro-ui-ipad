@@ -1,3 +1,4 @@
+import { TypeTeam } from './../../models/type-team';
 import { Timeout } from './../../models/timeout';
 import { GameModalStatPlayerComponent } from './../game-modal-stat-player/game-modal-stat-player.component';
 import { Quarter } from './../../models/quarter';
@@ -18,9 +19,9 @@ import { Team } from '../../models/team';
 export class GameLineupComponent implements OnInit {
 
   @Input() team:Team;
-  @Input() typeTeam:string;
+  @Input() typeTeam:TypeTeam;
   @Input() game:Game;
-  @Input() quarter: Quarter[];
+  @Input() activeQuarter: Quarter;
   @Output() stats = new EventEmitter<GameStat>();
 
 
@@ -35,8 +36,7 @@ export class GameLineupComponent implements OnInit {
    * @param player 
    * @param teamType 
    */
-  async optionPlayer(player:Player, teamType:string) {
-    let activeQuarter = this.quarter[this.quarter.length-1];
+  async optionPlayer(player:Player) {
     const modal = await this.modalController.create({
       component: GameModalStatComponent,
       componentProps: {
@@ -44,7 +44,7 @@ export class GameLineupComponent implements OnInit {
         'game': this.game,
         'player': player,
         'typeTeam':this.typeTeam,
-        'quarter': this.quarter.length
+        'activeQuarter':this.activeQuarter
       }
     });
     await modal.present();
@@ -81,10 +81,9 @@ export class GameLineupComponent implements OnInit {
   }
 
   async timeout( ){
-    let activeQuarter = this.quarter[this.quarter.length-1];
     let timeout = new Timeout();
-    timeout.timetext = activeQuarter.timetext;
-    activeQuarter[ this.typeTeam + "Timeouts"].push( new Timeout() );
+    timeout.timetext = this.activeQuarter.timetext;
+    this.activeQuarter[ this.typeTeam.toLowerCase() + "Timeouts"].push( new Timeout() );
   }
 
 }
