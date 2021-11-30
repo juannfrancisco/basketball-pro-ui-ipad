@@ -27,17 +27,27 @@
   </ion-segment>
 
   <ion-list>
+
     <ion-item-sliding *ngFor="let stat of gameStats | statsFilter:numberQuarter">
       <ion-item>
-        <ion-label>
+        <ion-label *ngIf="stat.typeTeam=='LOCAL'" >
           <strong>Q{{stat.quarter}}</strong>
           {{stat.quarterTimeText}} - {{stat.player?.name}} {{stat.player?.lastName}} ( {{stat.value}} {{stat.type}} )
         </ion-label>
+
+        <ion-label *ngIf="stat.typeTeam=='VISITOR'" class="text-end" >
+            ( {{stat.value}} {{stat.type}} ) {{stat.player?.lastName}} {{stat.player?.name}} - {{stat.quarterTimeText}}   
+            <strong>Q{{stat.quarter}}</strong>
+        </ion-label>
+
+
       </ion-item>
       <ion-item-options side="end">
         <ion-item-option>Eliminar</ion-item-option>
       </ion-item-options>
     </ion-item-sliding>
+
+
   </ion-list>
 
 </ion-content>
