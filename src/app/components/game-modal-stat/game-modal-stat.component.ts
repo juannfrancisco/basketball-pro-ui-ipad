@@ -49,9 +49,7 @@ export class GameModalStatComponent implements OnInit {
     gameStat.typeTeam = this.typeTeam;
     gameStat.value = value;
     gameStat.quarterTimeText = this.activeQuarter.timetext;
-    //this.gamesService.saveStat(this.game.oid, gameStat).subscribe();
     this.modalController.dismiss( gameStat );
-    //this.activeModal.close(gameStat);
   }
 
 }
